@@ -1,31 +1,4 @@
-Author's Note 
-
-
-This is a story of long ago. At that time the languages and letters were quite different from ours of 
-today. English is used to represent the languages. But two points may be noted. (1) In English the only 
-correct plural of dwarf is dwarfs, and the adjective is dwarfish. In this story dwarves and dwarvish are 
-used-, but only when speaking of the ancient people to whom Thorin Oakenshield and his companions 
-belonged. (2) Ore is not an English word. It occurs in one or two places but is usually translated goblin 
-(or hobgoblin for the larger kinds). Ore is the hobbits’ form of the name given at that time to these 
-creatures, and it is not connected at all with our ore, ork, applied to sea-animals of dolphin-kind. 
-
-Runes were old letters originally used for cutting or scratching on wood, stone, or metal, and so 
-were thin and angular. At the time of this tale only the Dwarves made regular use of them, especially 
-for private or secret records. Their runes are in this book represented by English runes, which are 
-known now to few people. If the runes on Thror’s Map are compared with the transcriptions into 
-modern letters! ±, the alphabet, adapted to modern English, can be discovered and the above runic 
-title also read. On the Map all the normal runes are found, except T for X. I and U are used for J and 
-V. There was no rune for Q (use CW); nor for Z (the dwarf-rune A may be used if required). It will be 
-found, however, that some single runes stand for two modern letters: th, ng, ee; other runes of the 
-same kind ( ^ea and COst) were also sometimes used. The secret door was marked DM. From the side 
-a hand pointed to this, and under it was written: 
-moon-runes read by Elrond were:
-
-On the Map the compass points are marked in runes, with East at the top, as usual in dwarf-maps, 
-and so read clockwise: E(ast), S(outh), W(est), N(orth). 
-
-
-Chapter I 
+1 
 
 
 AN UNEXPECTED PARTY 
@@ -803,7 +776,7 @@ after the break of day, when he woke up.
 
 
 
-Chapter II 
+Chapter 2 
 
 
 ROAST MUTTON 
@@ -1307,7 +1280,7 @@ anywhere ! ”
 
 
 
-Chapter III 
+Chapter 3 
 
 
 A SHORT REST 
@@ -1586,7 +1559,7 @@ speed, with their hearts ready for more adventure, and with a knowledge of the r
 over the Misty Mountains to the land beyond. 
 
 
-Chapter IV 
+Chapter 4 
 
 
 OVER HILL AND UNDER HILL 
@@ -1931,7 +1904,7 @@ hard rock, and remembered nothing more.
 
 
 
-Chapter V 
+Chapter 5 
 
 
 RIDDLES IN THE DARK 
@@ -2592,7 +2565,7 @@ Of course they soon came down after him, hooting and hallooing, and hunting amon
 they don’t like the sun: it makes their legs wobble and their heads giddy. They could not find Bilbo 
 with the ring on, slipping in and out of the shadow of the trees, running quick and quiet, and keeping 
 out of the sun; so soon they went back grumbling and cursing to guard the door. Bilbo had escaped.  
-Chapter VI 
+Chapter 6 
 
 
 OUT OF THE FRYING-PAN INTO THE FIRE 
@@ -3164,7 +3137,7 @@ find nor remember what it looked like.
 
 
 
-Chapter VII 
+Chapter 7 
 
 
 QUEER LODGINGS 
@@ -3931,7 +3904,7 @@ was their share, and turned from the light that lay on the lands outside and plu
 
 
 
-Chapter VTIT 
+Chapter 8 
 
 
 FETES AND SPIDERS 
@@ -4746,7 +4719,7 @@ in which the hobbit again showed his usefulness.
 
 
 
-Chapter IX 
+Chapter 9 
 
 
 BARRELS OUT OF BOND 
@@ -5225,7 +5198,7 @@ still remains to be seen.
 
 
 
-Chapter X 
+Chapter 10 
 
 
 A WARM WELCOME 
@@ -5547,7 +5520,7 @@ thoroughly unhappy was Bilbo.
 
 
 
-Chapter XI 
+Chapter 11 
 
 
 ON THE DOORSTEP 
@@ -5796,7 +5769,7 @@ and down.
 
 
 
-Chapter XII 
+Chapter 12 
 
 
 INSIDE INFORMATION 
@@ -6367,7 +6340,7 @@ He rose in fire and went away south towards the Running River.
 
 
 
-Chapter XTIT 
+Chapter 13 
 
 
 NOT AT HOME 
@@ -6698,7 +6671,7 @@ understanding it, when the first cold stars came out.
 
 
 
-Chapter XTV 
+Chapter 14 
 
 
 FIRE AND WATER 
@@ -6953,7 +6926,7 @@ their host passed the rock-gates at the end of the lake and came into the desola
 
 
 
-Chapter XV 
+Chapter 15 
 
 
 THE GATHERING OF THE CLOUDS 
@@ -7275,7 +7248,7 @@ is beginning simply to stick in my throat.”
 
 
 
-Chapter XVT 
+Chapter 16 
 
 
 A THIEF TN THE NIGHT 
@@ -7473,7 +7446,7 @@ his worries till the morning. As a matter of fact he was dreaming of eggs and ba
 
 
 
-Chapter XVTI 
+Chapter 17 
 
 
 THE CLOUDS BURST 
@@ -7807,10 +7780,10 @@ heavily on his helm, and he fell with a crash and knew no more.
 
 
 
-Chapter XVTIT 
+Chapter 18 
 
 
-THE RETURN TOURNEY 
+THE RETURN JOURNEY 
 
 
 When Bilbo came to himself, he was literally by himself. He was lying on the flat stones of Ravenhill, 
@@ -8056,7 +8029,7 @@ on his adventure. The Tookish part was getting very tired, and the Baggins was d
 
 
 
-Chapter XTX 
+Chapter 19 
 
 
 THE LAST STAGE 

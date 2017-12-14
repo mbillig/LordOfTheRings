@@ -1,4 +1,4 @@
-Chapter 1 . Minas Tirith 
+1 . Minas Tirith 
 
 
 
@@ -13417,7 +13417,7 @@ with Sam, and he handed over his keys. There was a big book with plain red
 leather covers; its tall pages were now almost filled. At the beginning 
 there were many leaves covered with Bilbo's thin wandering hand; but most of 
 it was written in Frodo's firm flowing script. It was divided into chapters 
-but Chapter 80 was unfinished, and after that were some blank leaves. The 
+but section 80 was unfinished, and after that were some blank leaves. The 
 title page had many titles on it, crossed out one after another, so: 
 
 My Diary. My Unexpected Journey. There and Back Again. And What 
