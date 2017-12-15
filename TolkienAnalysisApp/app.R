@@ -10,6 +10,7 @@
 library(shiny)
 library(ggplot2)
 library(reshape2)
+library(DT)
 library(shinycssloaders)
 source("getTopicModels.R")
 
@@ -38,19 +39,24 @@ ui <- fluidPage(
                                    ),selected = c("book1","book2","book3","book4","book5","book6")), 
         sliderInput("topics",
                      "Number of Topics:",
-                     min = 2,
+                     min = 0,
                      max = 50,
-                     value = 10),
+                     value = 5),
          sliderInput("optimize",
                      "Select an Omptimization Index:",
                      min = 0,
                      max = 50,
-                     value = 20)
+                     value = 20),
+        actionButton("update",
+                     "Update Plot"
+        )
       ),
       
       # Show a plot of the generated distribution
       mainPanel(
-         withSpinner(plotOutput("distPlot"))
+         withSpinner(plotOutput("distPlot")),
+         
+         dataTableOutput("topicsTable")
       )
    )
 )
@@ -58,34 +64,66 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
    
+  getTopicDist <- eventReactive(input$update, {
+    corpus = input$corpus
+    print(corpus)
+    multipleSelected = (length(corpus) > 1)
+    isSelected = !is.na(match('complete_texts', corpus))
+    validSelection = TRUE
+    if(isSelected){
+      if(multipleSelected){
+        validSelection = FALSE
+      }else{
+        validSelection = TRUE
+      }
+    }
+    validate(
+      need(validSelection, "Complete Texts option cannot be selected with other texts")
+    ) 
+    validate(
+      need(length(corpus) != 0, "Please select at least one body of work")
+    )
+    
+    nTopics = input$topics
+    optInt = input$optimize
+    
+    TopicDist = getTopicModels(nTopics, optInt, corpus)
+  }, ignoreNULL = FALSE)
+  
+  selectedTopics <- eventReactive(input$topicsTable_rows_selected, {
+    selectedTopics = input$topicsTable_rows_selected
+  }, ignoreNULL = FALSE)
+  
    output$distPlot <- renderPlot({
      
-     corpus = input$corpus
-     print(corpus)
-     multipleSelected = (length(corpus) > 1)
-     isSelected = !is.na(match('complete_texts', corpus))
-     validate(
-        need((!multipleSelected & isSelected) | (!isSelected & multipleSelected), "Complete Texts option cannot be selected with other texts")
-      ) 
-     
-      nTopics = input$topics
-      optInt = input$optimize
-      
-      TopicDist = getTopicModels(nTopics, optInt, corpus)
+      TopicDist = getTopicDist()
       topics = TopicDist[,c(1,2)]
       dists = data.frame(t(TopicDist[,c(3:ncol(TopicDist))]))
-      topicNames = c("Topic 1")
-      for (i in 2:ncol(dists)){
-        topicNames = c(topicNames, paste("Topic ", i, sep = ""))
-      }
-      names(dists) = topicNames
+      
       section = 1:nrow(dists)
       dists = cbind(section, dists)
       
       dfl <- melt(dists, id.vars = 'section', variable.names = 'series')
       
-      ggplot(dfl, aes(section, value)) + geom_line(aes(colour = variable))
+      selTopics = selectedTopics()
+      if(is.null(selTopics)) selTopics = c(0)
+      
+      isTopicSelected = rep(1, nrow(dfl))
+      for (i in 1:nrow(dfl)){
+        if(is.element(as.numeric(dfl$variable[i]), selTopics)){
+          isTopicSelected[i] = 2.5
+        }
+      }
+      
+      ggplot(dfl, aes(section, value)) + geom_line(aes(colour = variable, size = isTopicSelected)) +
+        scale_size_identity() 
 
+   })
+   
+   output$topicsTable <- renderDataTable({
+     TopicDist = getTopicDist()
+     topics = TopicDist[,c(1,2)]
+     datatable(topics)
    })
 }
 

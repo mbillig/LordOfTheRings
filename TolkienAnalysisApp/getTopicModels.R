@@ -6,11 +6,11 @@ getTopicModels <- function(nTopics, optint, corpus){
   
   output = paste(outdir, "lotr.mallet", sep="")
   outputState = paste(outdir, "topic-state.gz", sep="")
-  outputTopicKeys = paste(outdir, "lotr_keys.txt", sep="")
-  outputDocTopics = paste(outdir, "lotr_composition.txt", sep="")
+  outputKeys = paste(outdir, "lotr_keys.txt", sep="")
+  outputTopics = paste(outdir, "lotr_composition.txt", sep="")
   
   importCommand = paste("./mallet/bin/mallet  import-dir --input", dirlist, "--output", output, "--keep-sequence --remove-stopwords", sep = " ")
-  trainCommand = paste("./mallet/bin/mallet train-topics  --input", output, "--num-topics", nTopics, "--optimize-interval",  optint, "--output-state", outputState,  "--output-topic-keys", outputTopicKeys, "--output-doc-topics", outputDocTopics, sep = " ")
+  trainCommand = paste("./mallet/bin/mallet train-topics  --input", output, "--num-topics", nTopics, "--optimize-interval",  optint, "--output-state", outputState,  "--output-topic-keys", outputKeys, "--output-doc-topics", outputTopics, sep = " ")
   
   MALLET_HOME <- "./mallet" # location of the bin directory
   Sys.setenv("MALLET_HOME" = MALLET_HOME)
@@ -21,19 +21,26 @@ getTopicModels <- function(nTopics, optint, corpus){
   system(importCommand)
   system(trainCommand)
   
-  outputDocTopicsResult <-read.delim(outputDocTopics, header=F, sep="\t")
-  outputTopicKeysResult <- read.delim(outputTopicKeys, header=F, sep="\t")
+  topicsDF <-read.delim(outputTopics, header=F, sep="\t")
+  keysDF <- read.delim(outputKeys, header=F, sep="\t")
   
   #csvTopics = paste(outdir, "topic_model_table.csv", sep = "") 
   #csvKeys = paste(outdir, "topic_keys_table.csv", sep = "") 
-  #write.csv(outputDocTopicsResult, csvTopics)
-  #write.csv(outputTopicKeysResult, csvKeys)
+  #write.csv(topicsDF, csvTopics)
+  #write.csv(keysDF, csvKeys)
   
-  outputDocTopicsResult$V1 = NULL  
-  outputDocTopicsResult$V2 = NULL
-  topicTrans = t(outputDocTopicsResult)
+  topicsDF$V1 = NULL  
+  topicsDF$V2 = NULL
+  topicNames = c("Topic 1")
+  for (i in 2:ncol(topicsDF)){
+    topicNames = c(topicNames, paste("Topic ", i, sep = ""))
+  }
+  names(topicsDF) = topicNames
   
-  getTopicModels = cbind(outputTopicKeysResult[,c(2,3)], topicTrans)
+  names(keysDF) = c('key_index', 'Topic Weight', "Keywords")
+  topicTrans = t(topicsDF)
+  
+  getTopicModels = cbind(keysDF[,c(2,3)], topicTrans)
   
 }
 
