@@ -1,0 +1,12 @@
+name: tolkienanalysisapp
+title:
+username:
+account: mbillig
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 248673
+bundleId: 1136277
+url: https://mbillig.shinyapps.io/tolkienanalysisapp/
+when: 1513318862.99283
+asMultiple: FALSE
+asStatic: FALSE
