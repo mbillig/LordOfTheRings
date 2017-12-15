@@ -18,47 +18,72 @@ source("getTopicModels.R")
 # Define UI for application that draws a histogram
 ui <- fluidPage(
    
-   # Application title
-   titlePanel("Tolkien Topic Analysis"),
-   h4('Patience please - analysis may take up to a minute'),
-   
-   # Sidebar with a slider input for number of bins 
-   sidebarLayout(
-      sidebarPanel(
-        checkboxGroupInput("corpus", 
-                    "Select works to include in corpus:",
-                    choices = list("The Hobbit" = "hobbit", 
-                                   "The Fellowship of the Ring: Book 1" = "book1",
-                                   "The Fellowship of the Ring: Book 2" = "book2",
-                                   "The Two Towers: Book 3" = "book3",
-                                   "The Two Towers: Book 4" = "book4",
-                                   "Return of the King: Book 5" = "book5",
-                                   "Return of the King: Book 6" = "book6",
-                                   "The Silmarillion" = "silmarillion",
-                                   "Complete Texts (not by chapter)" = "complete_texts"
-                                   ),selected = c("book1","book2","book3","book4","book5","book6")), 
-        sliderInput("topics",
-                     "Number of Topics:",
-                     min = 0,
-                     max = 50,
-                     value = 5),
-         sliderInput("optimize",
-                     "Select an Omptimization Index:",
-                     min = 0,
-                     max = 50,
-                     value = 20),
-        actionButton("update",
-                     "Update Plot"
-        )
-      ),
-      
-      # Show a plot of the generated distribution
-      mainPanel(
-         withSpinner(plotOutput("distPlot")),
-         
-         dataTableOutput("topicsTable")
-      )
-   )
+  navbarPage("Tolkien Analysis", 
+             tabPanel("Results",
+                      
+                      # Application title
+                      titlePanel("Tolkien Topic Analysis"),
+                      h4('Patience please - analysis may take up to a minute'),
+                      
+                      # Sidebar with a slider input for number of bins 
+                      sidebarLayout(
+                        sidebarPanel(
+                          checkboxGroupInput("corpus", 
+                                             "Select works to include in corpus:",
+                                             choices = list("The Hobbit" = "hobbit", 
+                                                            "The Fellowship of the Ring: Book 1" = "book1",
+                                                            "The Fellowship of the Ring: Book 2" = "book2",
+                                                            "The Two Towers: Book 3" = "book3",
+                                                            "The Two Towers: Book 4" = "book4",
+                                                            "Return of the King: Book 5" = "book5",
+                                                            "Return of the King: Book 6" = "book6",
+                                                            "The Silmarillion" = "silmarillion",
+                                                            "The Hobbit, LOTR, and Silmarillion*" = "complete_texts",
+                                                            "A History of Middle-earth*" = "history"
+                                             ),selected = c("hobbit")), 
+                          helpText("Works with an * are indexed by book, not chapter"),
+                          sliderInput("topics",
+                                      "Number of Topics:",
+                                      min = 0,
+                                      max = 50,
+                                      value = 5),
+                          sliderInput("optimize",
+                                      "Select an Omptimization Index:",
+                                      min = 0,
+                                      max = 50,
+                                      value = 20),
+                          actionButton("update",
+                                       "Update Plot"
+                          )
+                        ),
+                        
+                        # Show a plot of the generated distribution
+                        mainPanel(
+                          withSpinner(plotOutput("distPlot")),
+                          helpText("Select a Topic from the table to bold its line on the graph"),
+                          dataTableOutput("topicsTable")
+                        )
+                      )
+                      
+                      ),
+             tabPanel("What is Topic Modeling?",
+                      titlePanel("What is Topic Modeling?"),
+                      column(8,
+                        includeHTML("TopicModelDesc.html")
+                      )
+                      ),
+             tabPanel("Interpretation",
+                      titlePanel("Interpretation"),
+                      column(8,
+                        includeHTML("InterpretationDoc.html")
+                      )
+                      ),
+             tabPanel("References",
+                      titlePanel("References"),
+                      h4("in progress...")
+                      )
+             
+             )
 )
 
 # Define server logic required to draw a histogram
@@ -116,7 +141,8 @@ server <- function(input, output) {
       }
       
       ggplot(dfl, aes(section, value)) + geom_line(aes(colour = variable, size = isTopicSelected)) +
-        scale_size_identity() 
+        scale_size_identity() + theme(legend.position="bottom", legend.key.width = unit(.8, "in"), legend.key.height = unit(.4, "in")) +
+        guides(colour = guide_legend(override.aes = list(size=3.5))) + guides(fill=guide_legend(title=""))
 
    })
    

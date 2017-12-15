@@ -5,8 +5,8 @@ account: mbillig
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 248673
-bundleId: 1136433
+bundleId: 1137211
 url: https://mbillig.shinyapps.io/tolkienanalysisapp/
-when: 1513328252.33795
+when: 1513359585.65002
 asMultiple: FALSE
 asStatic: FALSE
