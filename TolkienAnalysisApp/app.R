@@ -17,7 +17,6 @@ source("getTopicModels.R")
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-   
   navbarPage("Tolkien Analysis", 
              tabPanel("Results",
                       
@@ -65,23 +64,27 @@ ui <- fluidPage(
                         )
                       )
                       
-                      ),
+             ),
              tabPanel("What is Topic Modeling?",
                       titlePanel("What is Topic Modeling?"),
                       column(8,
                         includeHTML("TopicModelDesc.html")
                       )
-                      ),
+             ),
              tabPanel("Interpretation",
                       titlePanel("Interpretation"),
                       column(8,
                         includeHTML("InterpretationDoc.html")
                       )
-                      ),
+             ),
              tabPanel("References",
                       titlePanel("References"),
-                      h4("in progress...")
+                      column(8,
+                             includeHTML("RefDoc.html")
+                             
+                             
                       )
+             )
              
              )
 )
